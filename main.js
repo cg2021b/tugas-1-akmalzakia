@@ -12,6 +12,8 @@ function createShader(gl, type, source) {
     gl.deleteShader(shader);
 }
 
+
+
 /**
  * @type {HTMLCanvasElement} canvas
  */
@@ -23,9 +25,10 @@ let canvas = document.getElementById('myCanvas');
 let gl = canvas.getContext('experimental-webgl');
 
 let vertices = [
-    ...l1_alas, ...l1_frame, ...l1_layar, ...l1_shade, ...l1_keyboard,
-	...l1_keycaps
+    ...l1_alas, ...l1_frame, ...l1_bevel_layar_kiri, ...l1_bevel_layar_kanan, ...l1_layar, ...l1_shade, ...l1_keyboard,
+	...l1_keycaps, ... l1_mousepad, ...l1_bevel_mousepad_kiri_atas, ...l1_bevel_mousepad_kanan_atas, ...l1_bevel_mousepad_kiri_bawah, ...l1_bevel_mousepad_kanan_bawah,
 ]
+
 
 let vertexShaderCode = `
     attribute vec2 a_position;
@@ -81,6 +84,27 @@ for (let i = 0; i < l1_frame.length/2; i++) {
 	color.push(1);
 }
 
+for (let i = 0; i < l1_bevel_layar_kiri.length/2; i++) {
+	let r = 0.65;
+	let g = 0.65;
+	let b = 0.65;
+	color.push(r);
+	color.push(g);
+	color.push(b);
+	color.push(1);
+}
+
+for (let i = 0; i < l1_bevel_layar_kanan.length/2; i++) {
+	let r = 0.65;
+	let g = 0.65;
+	let b = 0.65;
+	color.push(r);
+	color.push(g);
+	color.push(b);
+	color.push(1);
+}
+
+
 for (let i = 0; i < l1_layar.length/2; i++) {
 	let r = 0.70;
 	let g = 0.70;
@@ -121,6 +145,58 @@ for (let i = 0; i < l1_keycaps.length/2; i++) {
 	color.push(1);
 }
 
+for (let i = 0; i < l1_mousepad.length/2; i++) {
+	let r = 0.70;
+	let g = 0.70;
+	let b = 0.70;
+	color.push(r);
+	color.push(g);
+	color.push(b);
+	color.push(1);
+}
+
+for (let i = 0; i < l1_bevel_mousepad_kiri_atas.length/2; i++) {
+	let r = 0.70;
+	let g = 0.70;
+	let b = 0.70;
+	color.push(r);
+	color.push(g);
+	color.push(b);
+	color.push(1);
+}
+
+for (let i = 0; i < l1_bevel_mousepad_kanan_atas.length/2; i++) {
+	let r = 0.70;
+	let g = 0.70;
+	let b = 0.70;
+	color.push(r);
+	color.push(g);
+	color.push(b);
+	color.push(1);
+}
+
+for (let i = 0; i < l1_bevel_mousepad_kanan_bawah.length/2; i++) {
+	let r = 0.70;
+	let g = 0.70;
+	let b = 0.70;
+	color.push(r);
+	color.push(g);
+	color.push(b);
+	color.push(1);
+}
+
+for (let i = 0; i < l1_bevel_mousepad_kiri_bawah.length/2; i++) {
+	let r = 0.70;
+	let g = 0.70;
+	let b = 0.70;
+	color.push(r);
+	color.push(g);
+	color.push(b);
+	color.push(1);
+}
+
+
+
 
 let colorBuffer = gl.createBuffer();
 gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
@@ -154,9 +230,17 @@ function draw(){
     gl.drawArrays(
 		gl.TRIANGLES, 
 		0, 
-		(l1_alas.length + l1_frame.length + l1_layar.length
-            + l1_shade.length + l1_keyboard.length + l1_keycaps.length)/2
+		(l1_alas.length + l1_frame.length + l1_layar.length + l1_bevel_layar_kiri.length
+            + l1_bevel_layar_kanan.length + l1_shade.length + l1_keyboard.length + l1_keycaps.length
+			+ l1_mousepad.length + l1_bevel_mousepad_kiri_atas.length + l1_bevel_mousepad_kanan_atas.length
+			+ l1_bevel_mousepad_kiri_bawah.length + l1_bevel_mousepad_kanan_bawah.length )/2
 	);
+
+	// gl.drawArrays(
+	// 	gl.TRIANGLES, 
+	// 	0, 
+	// 	(l1_bevel_layar_kiri.length)/2
+	// );
 
     requestAnimationFrame(draw);
 }
