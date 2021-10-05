@@ -25,13 +25,50 @@ function make_bevel(degree, px = 0, py = 0 , radius = 1, start_degree = 0){
 }
 
 let l1_alas = [
-    -0.75, -0.4638, // kiri bawah
-    -0.44715, -0.11805, // kiri atas
-    0.4365, -0.11805, // kanan atas
-    0.4365, -0.11805, // kanan atas
-    -0.75, -0.4638, // kiri bawah
-    0.75, -0.4638, // kanan bawah
+    // segitiga atas
+    0,-0.26, // pusat
+    -0.44715,-0.11805, // kiri atas
+    0.4365,-0.11805, // kanan atas
+    
+    // segitiga kiri
+    0,-0.26, // pusat
+    -0.44715,-0.11805, // kiri atas
+    -0.7364,-0.4458, // kiri bawah atas
+
+    // penyiku kiri atas
+    0,-0.26, // pusat
+    -0.7364,-0.4458, // kiri bawah atas
+    -0.7213,-0.448, // pusat kiri
+
+    // penyiku kiri bawah
+    0,-0.26, // pusat
+    -0.7213,-0.448, // pusat kiri
+    -0.7284,-0.461, // kiri bawah bawah
+
+    // segitiga bawah
+    0,-0.26, // pusat
+    -0.7284,-0.461, // kiri bawah bawah
+    0.7264,-0.461, // kanan bawah bawah
+
+    // penyiku kanan bawah
+    0,-0.26, // pusat
+    0.7192,-0.4475, // pusat kanan
+    0.7264,-0.461, // kanan bawah bawah
+
+    // penyiku kanan atas
+    0,-0.26, // pusat
+    0.7192,-0.4475, // pusat kanan
+    0.7328,-0.4423, // kanan bawah atas
+
+    // segitiga kanan
+    0,-0.26, // pusat
+    0.7328,-0.4423, // kanan bawah atas
+    0.4365,-0.11805, // kanan atas
 ]
+
+let l1_bevel_alas_kiri = make_bevel(360, -0.7213, -0.448, 0.0148124947257, 0);
+let l1_bevel_alas_kanan = make_bevel(360, 0.7192, -0.4475, 0.0153, 0);
+
 
 let l1_frame = [
     //segitiga bawah
@@ -89,12 +126,12 @@ let l1_layar = [
 ]
 
 let l1_shade = [
-    -0.725, -0.487, // kiri bawah
-    -0.75, -0.4638, // kiri atas
-    0.75, -0.4638, // kanan atas
-    0.75, -0.4638, // kanan atas
-    -0.725, -0.487, // kiri bawah
-    0.725, -0.487, // kanan bawah
+    -0.7064,-0.487, // kiri bawah
+    -0.7284,-0.461, // kiri atas
+    0.7264,-0.461, // kanan atas
+    0.7264,-0.461, // kanan atas
+    -0.7064,-0.487, // kiri bawah
+    0.7105,-0.4864, // kanan bawah
 ]
 
 let l1_keyboard = [
