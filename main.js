@@ -429,8 +429,8 @@ let right_length = (l2_alas.length + l2_alas_bevel_kiri_atas.length + l2_alas_be
 
 function draw(){
 
-	dy >= 0.68 ? speed = -speed : speed = speed;
-	dy <= -0.73 ? speed = -speed : speed = speed;
+	dy >= 0.55 ? speed = -speed : speed = speed;
+	dy <= -0.55 ? speed = -speed : speed = speed;
 	dy += speed;
 
     gl.useProgram(shaderProgram);
