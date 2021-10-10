@@ -5,7 +5,7 @@ import * as dat from './three/dat.gui.module.js'
 // Loading
 const textureLoader = new THREE.TextureLoader()
 
-const normalTexture = textureLoader.load('/textures/normalMap.png')
+const normalTexture = textureLoader.load('./textures/normalMap.png')
 
 // Debug
 const gui = new dat.GUI()
@@ -58,7 +58,7 @@ cylinderMaterial.wireframe = true
 
 //icosahedron material
 const icosahedronMaterial = new THREE.MeshPhysicalMaterial()
-icosahedronMaterial.color = new THREE.Color(0x292929)
+icosahedronMaterial.color = new THREE.Color(0xffaaaa)
 icosahedronMaterial.roughness = 0.5
 icosahedronMaterial.metalness = 1
 icosahedronMaterial.reflectivity = 0.68
@@ -197,7 +197,7 @@ directionalLightHelper.visible = false
 scene.add(directionalLightHelper)
 
 directionalLightFolder.add(directionalLight, 'visible')
-directionalLightFolder.add(directionalLightHelper, 'visible')
+directionalLightFolder.add(directionalLightHelper, 'visible').name('Helper')
 
 const spotLightFolder = gui.addFolder('Spotlight')
 const spotLight = new THREE.SpotLight( 0xffffff );
@@ -219,7 +219,7 @@ spotLightHelper.visible = false
 scene.add(spotLightHelper)
 
 spotLightFolder.add(spotLight, 'visible')
-spotLightFolder.add(spotLightHelper, 'visible')
+spotLightFolder.add(spotLightHelper, 'visible').name('Helper')
 
 lights.forEach((l) => scene.add(l))
 
