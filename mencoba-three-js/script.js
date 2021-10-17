@@ -1,6 +1,4 @@
-import * as THREE from './three/three.module.js'
-import { OrbitControls } from './three/OrbitControls.js'
-import * as dat from './three/dat.gui.module.js'
+c
 
 // Loading
 const textureLoader = new THREE.TextureLoader()
